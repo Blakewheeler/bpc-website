@@ -7,6 +7,31 @@
   <link rel="stylesheet" href="style.css">
 
   <style>
+    /* MY BUILDS BACKGROUND */
+    .builds-page {
+      position: relative;
+      background: #111;
+    }
+
+    .builds-page::before {
+      content: "";
+      position: fixed;
+      inset: -25px;
+      background: url("hero-bg.jpg.JPG") center center / cover no-repeat;
+      filter: blur(12px);
+      transform: scale(1.05);
+      z-index: -2;
+    }
+
+    .builds-page::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: rgba(10, 10, 10, 0.58);
+      z-index: -1;
+    }
+
+    .showcase {
     .showcase {
       max-width: 1100px;
       margin: 0 auto;
