@@ -33,14 +33,14 @@ const builds = [
     id: "build-02",
     name: "Southern Eagle",
     featured: true,
-    images: [
-      "images/build-02/build-02-01.jpeg",
-      "images/build-02/build-02-02.jpeg",
-      "images/build-02/build-02-03.jpeg",
-      "images/build-02/build-02-04.jpeg",
-      "images/build-02/build-02-05.jpeg",
-      "images/build-02/build-02-06.jpeg"
-    ],
+    images: images: [
+  "images/build-02/IMG_0357.jpeg",
+  "images/build-02/IMG_0358.jpeg",
+  "images/build-02/IMG_0359.jpeg",
+  "images/build-02/IMG_0360.jpeg",
+  "images/build-02/IMG_0361.jpeg",
+  "images/build-02/IMG_0362.jpeg"
+],
     story: "Built as a display-focused custom, this classic long-nose American semi was transformed with a deep candy-apple red finish and extensive chrome detailing. Every exterior surface was carefully prepared, painted and clear-coated to create the deep gloss across the cab and body. The tractor was finished with dual vertical stacks, detailed mirrors, polished brightwork and a carefully set stance. Behind it sits a mirror-finish stainless-steel tanker carrying the Southern Eagle graphics.",
     features: [
       "Deep candy-apple red paint",
