@@ -68,7 +68,7 @@ const builds = [
   {
     id: "build-04",
     name: "Build 04",
-    images: ["build-04.jpg"]
+    images: ["build-04.JPG"]
   },
 
   {
