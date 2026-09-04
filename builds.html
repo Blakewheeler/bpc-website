@@ -1,358 +1,444 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="View custom diecast truck builds by Blake Precision Customs. Scales, pricing, and customization options." />
-  <title>Builds & Scales | Blake Precision Customs</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Builds | BPC</title>
   <link rel="stylesheet" href="style.css">
+
+  <style>
+    .showcase {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 40px 20px 80px;
+    }
+
+    .featured-build {
+      margin-bottom: 70px;
+    }
+
+    .build-heading {
+      text-align: center;
+      margin-bottom: 25px;
+    }
+
+    .build-heading h2 {
+      margin-bottom: 8px;
+    }
+
+    .build-heading p {
+      opacity: 0.75;
+    }
+
+    .build-card {
+      background: #111;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 12px 35px rgba(0,0,0,0.25);
+    }
+
+    .slider {
+      position: relative;
+      width: 100%;
+      background: #000;
+      overflow: hidden;
+    }
+
+    .slider img {
+      display: block;
+      width: 100%;
+      height: auto;
+      max-height: 650px;
+      object-fit: contain;
+      margin: 0 auto;
+    }
+
+    .slider-button {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 45px;
+      height: 45px;
+      border: 0;
+      border-radius: 50%;
+      background: rgba(0,0,0,0.65);
+      color: white;
+      font-size: 25px;
+      cursor: pointer;
+      z-index: 3;
+    }
+
+    .slider-button.prev {
+      left: 15px;
+    }
+
+    .slider-button.next {
+      right: 15px;
+    }
+
+    .dots {
+      display: flex;
+      justify-content: center;
+      gap: 7px;
+      padding: 15px;
+      background: #111;
+    }
+
+    .dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      border: 0;
+      background: #777;
+      padding: 0;
+      cursor: pointer;
+    }
+
+    .dot.active {
+      background: white;
+      transform: scale(1.25);
+    }
+
+    .build-info {
+      padding: 30px;
+      color: white;
+    }
+
+    .build-info h3 {
+      margin-top: 0;
+      font-size: 28px;
+    }
+
+    .build-story {
+      line-height: 1.7;
+      opacity: 0.9;
+    }
+
+    .feature-list {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px 25px;
+      margin-top: 25px;
+      padding-left: 20px;
+    }
+
+    .feature-list li {
+      line-height: 1.5;
+    }
+
+    .work-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    .work-item {
+      background: #111;
+      border-radius: 16px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .work-item img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+    }
+
+    .work-item button {
+      position: absolute;
+      top: 12px;
+      width: 38px;
+      height: 38px;
+      border: 0;
+      border-radius: 50%;
+      background: rgba(0,0,0,0.7);
+      color: white;
+      font-size: 20px;
+      cursor: pointer;
+    }
+
+    .work-item .small-prev {
+      left: 12px;
+    }
+
+    .work-item .small-next {
+      right: 12px;
+    }
+
+    .work-dots {
+      display: flex;
+      justify-content: center;
+      gap: 5px;
+      padding: 10px;
+    }
+
+    .work-dot {
+      width: 7px;
+      height: 7px;
+      border: 0;
+      border-radius: 50%;
+      background: #777;
+      padding: 0;
+    }
+
+    .work-dot.active {
+      background: white;
+    }
+
+    @media (max-width: 700px) {
+      .showcase {
+        padding: 30px 15px 60px;
+      }
+
+      .feature-list {
+        grid-template-columns: 1fr;
+      }
+
+      .work-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .build-info {
+        padding: 22px;
+      }
+
+      .build-info h3 {
+        font-size: 24px;
+      }
+
+      .slider-button {
+        width: 40px;
+        height: 40px;
+      }
+    }
+  </style>
 </head>
+
 <body>
 
-  <!-- NAVIGATION -->
-  <nav class="navbar" id="navbar">
-    <div class="container nav-inner">
-      <a href="index.html" class="logo">
-        <span class="logo-mark">BPC</span>
-        <span class="logo-text">BLAKE PRECISION CUSTOMS</span>
-      </a>
-      <div class="nav-links">
-        <a href="index.html">Home</a>
-        <a href="builds.html" class="active">Builds</a>
-        <a href="contact.html">Contact</a>
-        <a href="contact.html#create" class="btn btn-primary nav-cta">Create a Custom Build</a>
-      </div>
-      <button class="hamburger" id="hamburger" aria-label="Menu">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-    <div class="mobile-menu" id="mobileMenu">
+  <header>
+    <nav>
       <a href="index.html">Home</a>
-      <a href="builds.html">Builds</a>
+      <a href="builds.html">My Builds</a>
       <a href="contact.html">Contact</a>
-      <a href="contact.html#create" class="btn btn-primary">Create a Custom Build</a>
-    </div>
-  </nav>
+    </nav>
+  </header>
 
-  <!-- PAGE HEADER -->
-  <section class="section" style="padding-top: 8rem; padding-bottom: 3rem; background: var(--charcoal);">
-    <div class="container" style="text-align:center;">
-      <p class="section-label reveal">My Work</p>
-      <h1 class="section-title reveal">Featured Builds</h1>
-      <p class="reveal" style="color:var(--light-gray); max-width:560px; margin:0 auto;">
-        Every model is built from real truck photos with personalized details and premium craftsmanship.
-      </p>
-    </div>
-  </section>
+  <main>
 
-  <!-- GALLERY -->
-  <section class="section featured" style="padding-top: 2rem;">
-    <div class="container">
-      <div class="gallery-grid" id="gallery">
-        <div class="gallery-item reveal" data-name="Midnight Hauler" data-meta="Custom Build" data-desc="Full custom details, openable hood and doors.">
-          <img src="https://images.unsplash.com/photo-1519003722824-194d4455a60c?w=800&q=80" alt="Custom diecast semi truck" />
-          <div class="gallery-overlay">
-            <span class="gallery-name">Midnight Hauler</span>
-            <span class="gallery-meta">Custom Build</span>
-          </div>
-        </div>
-        <div class="gallery-item reveal" data-name="Chrome Classic" data-meta="Custom Build" data-desc="Heavy chrome package, custom wheels.">
-          <img src="https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?w=800&q=80" alt="Custom diecast truck" />
-          <div class="gallery-overlay">
-            <span class="gallery-name">Chrome Classic</span>
-            <span class="gallery-meta">Custom Build</span>
-          </div>
-        </div>
-        <div class="gallery-item reveal" data-name="Desert Runner" data-meta="Custom Build" data-desc="Custom paint scheme with rubber tires.">
-          <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80" alt="Custom diecast semi" />
-          <div class="gallery-overlay">
-            <span class="gallery-name">Desert Runner</span>
-            <span class="gallery-meta">Custom Build</span>
-          </div>
-        </div>
-        <div class="gallery-item reveal" data-name="Redline Express" data-meta="Custom Build" data-desc="Deep red metallic finish, alloy rims.">
-          <img src="https://images.unsplash.com/photo-1580273916550-e323be2ae537?w=800&q=80" alt="Custom diecast truck" />
-          <div class="gallery-overlay">
-            <span class="gallery-name">Redline Express</span>
-            <span class="gallery-meta">Custom Build</span>
-          </div>
-        </div>
-        <div class="gallery-item reveal" data-name="Workhorse" data-meta="Custom Build" data-desc="Custom pickup with detailed interior.">
-          <img src="https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?w=800&q=80" alt="Custom diecast pickup" />
-          <div class="gallery-overlay">
-            <span class="gallery-name">Workhorse</span>
-            <span class="gallery-meta">Custom Build</span>
-          </div>
-        </div>
-        <div class="gallery-item reveal" data-name="Night Shift" data-meta="Custom Build" data-desc="Large scale with detailed engine bay.">
-          <img src="https://images.unsplash.com/photo-1494976388531-d1058494cdd8?w=800&q=80" alt="Custom large scale diecast" />
-          <div class="gallery-overlay">
-            <span class="gallery-name">Night Shift</span>
-            <span class="gallery-meta">Custom Build</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+    <section class="page-header">
+      <h1>My Builds</h1>
+      <p>A showcase of custom builds, detailing, and craftsmanship.</p>
+    </section>
 
-  <!-- CUSTOMIZATION -->
-  <section class="section customization" id="customization">
-    <div class="container">
-      <p class="section-label reveal">Built with Passion</p>
-      <h2 class="section-title reveal">Details That Matter</h2>
-      <div class="features-grid">
-        <div class="feature-card reveal">
-          <div class="feature-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 3v18M3 9h18"/></svg></div>
-          <h3 class="feature-title">Openable Doors</h3>
-        </div>
-        <div class="feature-card reveal">
-          <div class="feature-icon"><svg viewBox="0 0 24 24"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg></div>
-          <h3 class="feature-title">Openable Hood</h3>
-        </div>
-        <div class="feature-card reveal">
-          <div class="feature-icon"><svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg></div>
-          <h3 class="feature-title">Openable Trunk</h3>
-        </div>
-        <div class="feature-card reveal">
-          <div class="feature-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/></svg></div>
-          <h3 class="feature-title">Rubber Tires</h3>
-        </div>
-        <div class="feature-card reveal">
-          <div class="feature-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg></div>
-          <h3 class="feature-title">Alloy Style Rims</h3>
-        </div>
-        <div class="feature-card reveal">
-          <div class="feature-icon"><svg viewBox="0 0 24 24"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg></div>
-          <h3 class="feature-title">Metallic Finish</h3>
-        </div>
-        <div class="feature-card reveal">
-          <div class="feature-icon"><svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg></div>
-          <h3 class="feature-title">Custom Plates</h3>
-        </div>
-      </div>
-      <p class="custom-note reveal">
-        Your real truck becomes the reference. Customization can include paint and color, wheels and rims, tires, license plates, interior and exterior details, accessories, and other truck-specific features.
-      </p>
-    </div>
-  </section>
+    <section class="showcase">
 
-  <!-- SCALE SELECTOR -->
-  <section class="section scales-section" id="scales">
-    <div class="container">
-      <p class="section-label reveal" style="text-align:center;">Choose Your Scale</p>
-      <h2 class="section-title reveal" style="text-align:center;">Available Scales & Pricing</h2>
-      <p class="scales-intro reveal">
-        Click a scale to expand sizing details and pricing. Select the one that fits your vision — it will be noted when you create your custom build.
-      </p>
+      <div id="featured-builds"></div>
 
-      <div class="scale-cards">
-        <div class="scale-card reveal" data-scale="1:10" data-price="700">
-          <div class="scale-card-header"><h3>1:10</h3><span class="scale-badge">Largest</span></div>
-          <div class="scale-card-body"><div class="scale-card-inner">
-            <div class="scale-detail"><span>Size</span><span>Approx. 19–20 inches</span></div>
-            <div class="scale-price">$700<small>Starting price · Final quote after review</small></div>
-            <button type="button" class="btn btn-primary scale-select-btn">Select 1:10</button>
-          </div></div>
-        </div>
-        <div class="scale-card reveal" data-scale="1:12" data-price="670">
-          <div class="scale-card-header"><h3>1:12</h3><span class="scale-badge">Large</span></div>
-          <div class="scale-card-body"><div class="scale-card-inner">
-            <div class="scale-detail"><span>Size</span><span>Approx. 17–18 inches</span></div>
-            <div class="scale-price">$670<small>Starting price · Final quote after review</small></div>
-            <button type="button" class="btn btn-primary scale-select-btn">Select 1:12</button>
-          </div></div>
-        </div>
-        <div class="scale-card reveal" data-scale="1:14" data-price="650">
-          <div class="scale-card-header"><h3>1:14</h3><span class="scale-badge">Large</span></div>
-          <div class="scale-card-body"><div class="scale-card-inner">
-            <div class="scale-detail"><span>Size</span><span>Approx. 15–16 inches</span></div>
-            <div class="scale-price">$650<small>Starting price · Final quote after review</small></div>
-            <button type="button" class="btn btn-primary scale-select-btn">Select 1:14</button>
-          </div></div>
-        </div>
-        <div class="scale-card reveal" data-scale="1:16" data-price="600">
-          <div class="scale-card-header"><h3>1:16</h3><span class="scale-badge">RC Capable</span></div>
-          <div class="scale-card-body"><div class="scale-card-inner">
-            <div class="scale-detail"><span>Size</span><span>Approx. 13–14 inches</span></div>
-            <div class="scale-detail"><span>Feature</span><span>Remote Control</span></div>
-            <div class="scale-price">$600<small>Starting price · Final quote after review</small></div>
-            <button type="button" class="btn btn-primary scale-select-btn">Select 1:16</button>
-          </div></div>
-        </div>
-        <div class="scale-card reveal" data-scale="1:18" data-price="570">
-          <div class="scale-card-header"><h3>1:18</h3><span class="scale-badge">Mid Size</span></div>
-          <div class="scale-card-body"><div class="scale-card-inner">
-            <div class="scale-detail"><span>Size</span><span>Approx. 10–12 inches</span></div>
-            <div class="scale-price">$570<small>Starting price · Final quote after review</small></div>
-            <button type="button" class="btn btn-primary scale-select-btn">Select 1:18</button>
-          </div></div>
-        </div>
-        <div class="scale-card reveal" data-scale="1:24" data-price="500">
-          <div class="scale-card-header"><h3>1:24</h3><span class="scale-badge">Popular</span></div>
-          <div class="scale-card-body"><div class="scale-card-inner">
-            <div class="scale-detail"><span>Size</span><span>Approx. 8–9 inches</span></div>
-            <div class="scale-price">$500<small>Starting price · Final quote after review</small></div>
-            <button type="button" class="btn btn-primary scale-select-btn">Select 1:24</button>
-          </div></div>
-        </div>
-        <div class="scale-card reveal" data-scale="1:32" data-price="470">
-          <div class="scale-card-header"><h3>1:32</h3><span class="scale-badge">Compact</span></div>
-          <div class="scale-card-body"><div class="scale-card-inner">
-            <div class="scale-detail"><span>Size</span><span>Approx. 6–7 inches</span></div>
-            <div class="scale-price">$470<small>Starting price · Final quote after review</small></div>
-            <button type="button" class="btn btn-primary scale-select-btn">Select 1:32</button>
-          </div></div>
-        </div>
-        <div class="scale-card reveal" data-scale="1:48" data-price="450">
-          <div class="scale-card-header"><h3>1:48</h3><span class="scale-badge">Small</span></div>
-          <div class="scale-card-body"><div class="scale-card-inner">
-            <div class="scale-detail"><span>Size</span><span>Approx. 4–5 inches</span></div>
-            <div class="scale-price">$450<small>Starting price · Final quote after review</small></div>
-            <button type="button" class="btn btn-primary scale-select-btn">Select 1:48</button>
-          </div></div>
-        </div>
-        <div class="scale-card reveal" data-scale="1:64" data-price="400">
-          <div class="scale-card-header"><h3>1:64</h3><span class="scale-badge">Mini</span></div>
-          <div class="scale-card-body"><div class="scale-card-inner">
-            <div class="scale-detail"><span>Size</span><span>Hot Wheels sized</span></div>
-            <div class="scale-price">$400<small>Starting price · Final quote after review</small></div>
-            <button type="button" class="btn btn-primary scale-select-btn">Select 1:64</button>
-          </div></div>
-        </div>
+      <div class="build-heading">
+        <h2>More of My Work</h2>
+        <p>Additional custom builds and projects.</p>
       </div>
 
-      <div class="selected-scale-banner" id="selectedScaleBanner">
-        Selected: <strong id="selectedScaleText">—</strong> — Continue to Contact to submit your build request.
-      </div>
-      <p class="scale-note reveal">
-        Prices shown are starting prices and may vary based on truck type and customization level. Final pricing is confirmed after reviewing your photos and details.
-      </p>
-      <div style="text-align:center; margin-top: 2.5rem;">
-        <a href="contact.html#create" class="btn btn-primary">Create a Custom Build →</a>
-      </div>
-    </div>
-  </section>
+      <div id="work-grid" class="work-grid"></div>
 
-  <!-- FOOTER -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-grid">
-        <div>
-          <div class="footer-logo">
-            <div class="logo-mark">BPC</div>
-            <div class="logo-text">BLAKE PRECISION CUSTOMS</div>
-          </div>
-          <p class="footer-desc">Premium custom diecast truck replicas.</p>
-        </div>
-        <div>
-          <h4 class="footer-heading">Navigate</h4>
-          <div class="footer-links">
-            <a href="index.html">Home</a>
-            <a href="builds.html">Builds</a>
-            <a href="contact.html">Contact</a>
-          </div>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <span>© <span id="year"></span> Blake Precision Customs. All rights reserved.</span>
-      </div>
-    </div>
-  </footer>
+    </section>
 
-  <!-- LIGHTBOX -->
-  <div class="lightbox" id="lightbox">
-    <div class="lightbox-content">
-      <button class="lightbox-close" id="lightboxClose" aria-label="Close">×</button>
-      <button class="lightbox-nav lightbox-prev" id="lightboxPrev" aria-label="Previous">‹</button>
-      <img id="lightboxImg" src="" alt="" />
-      <button class="lightbox-nav lightbox-next" id="lightboxNext" aria-label="Next">›</button>
-      <div class="lightbox-info">
-        <strong id="lightboxName"></strong>
-        <div id="lightboxMeta"></div>
-      </div>
-    </div>
-  </div>
+  </main>
+
+  <script src="builds-data.js"></script>
 
   <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-    const navbar = document.getElementById('navbar');
-    window.addEventListener('scroll', () => navbar.classList.toggle('scrolled', window.scrollY > 50));
-    const hamburger = document.getElementById('hamburger');
-    const mobileMenu = document.getElementById('mobileMenu');
-    hamburger.addEventListener('click', () => {
-      hamburger.classList.toggle('active');
-      mobileMenu.classList.toggle('open');
-    });
-    mobileMenu.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        hamburger.classList.remove('active');
-        mobileMenu.classList.remove('open');
-      });
-    });
+    function createFeaturedBuild(build) {
+      const section = document.createElement("section");
+      section.className = "featured-build";
 
-    // Scale selector
-    const scaleCards = document.querySelectorAll('.scale-card');
-    const selectedBanner = document.getElementById('selectedScaleBanner');
-    const selectedScaleText = document.getElementById('selectedScaleText');
-    scaleCards.forEach(card => {
-      card.querySelector('.scale-card-header').addEventListener('click', () => {
-        const isOpen = card.classList.contains('open');
-        scaleCards.forEach(c => c.classList.remove('open'));
-        if (!isOpen) card.classList.add('open');
-      });
-      card.querySelector('.scale-select-btn').addEventListener('click', (e) => {
-        e.stopPropagation();
-        const scale = card.dataset.scale;
-        const price = card.dataset.price;
-        scaleCards.forEach(c => c.classList.remove('selected', 'open'));
-        card.classList.add('selected', 'open');
-        selectedScaleText.textContent = scale + ' ($' + Number(price).toLocaleString() + ')';
-        selectedBanner.classList.add('show');
-        localStorage.setItem('bpc_selected_scale', scale);
-      });
-    });
+      section.innerHTML = `
+        <div class="build-heading">
+          <h2>${build.name}</h2>
+        </div>
 
-    // Lightbox
-    const galleryItems = document.querySelectorAll('.gallery-item');
-    const lightbox = document.getElementById('lightbox');
-    const lightboxImg = document.getElementById('lightboxImg');
-    const lightboxName = document.getElementById('lightboxName');
-    const lightboxMeta = document.getElementById('lightboxMeta');
-    let currentIndex = 0;
-    function openLightbox(index) {
-      const item = galleryItems[index];
-      currentIndex = index;
-      lightboxImg.src = item.querySelector('img').src;
-      lightboxName.textContent = item.dataset.name || '';
-      lightboxMeta.textContent = item.dataset.meta || '';
-      lightbox.classList.add('active');
-      document.body.style.overflow = 'hidden';
+        <div class="build-card">
+
+          <div class="slider" data-index="0">
+            <img src="${build.images[0]}" alt="${build.name}">
+
+            <button class="slider-button prev" aria-label="Previous image">
+              &#10094;
+            </button>
+
+            <button class="slider-button next" aria-label="Next image">
+              &#10095;
+            </button>
+          </div>
+
+          <div class="dots"></div>
+
+          <div class="build-info">
+            <h3>${build.name}</h3>
+            <p class="build-story">${build.story}</p>
+
+            <ul class="feature-list">
+              ${build.features.map(feature => `<li>${feature}</li>`).join("")}
+            </ul>
+          </div>
+
+        </div>
+      `;
+
+      const slider = section.querySelector(".slider");
+      const image = slider.querySelector("img");
+      const dots = section.querySelector(".dots");
+
+      let current = 0;
+      let startX = 0;
+
+      build.images.forEach((src, index) => {
+        const dot = document.createElement("button");
+        dot.className = "dot" + (index === 0 ? " active" : "");
+        dot.setAttribute("aria-label", "View image " + (index + 1));
+
+        dot.addEventListener("click", () => {
+          current = index;
+          update();
+        });
+
+        dots.appendChild(dot);
+      });
+
+      function update() {
+        image.src = build.images[current];
+
+        section.querySelectorAll(".dot").forEach((dot, index) => {
+          dot.classList.toggle("active", index === current);
+        });
+      }
+
+      section.querySelector(".prev").addEventListener("click", () => {
+        current = (current - 1 + build.images.length) % build.images.length;
+        update();
+      });
+
+      section.querySelector(".next").addEventListener("click", () => {
+        current = (current + 1) % build.images.length;
+        update();
+      });
+
+      slider.addEventListener("touchstart", event => {
+        startX = event.touches[0].clientX;
+      });
+
+      slider.addEventListener("touchend", event => {
+        const endX = event.changedTouches[0].clientX;
+        const difference = startX - endX;
+
+        if (Math.abs(difference) > 50) {
+          if (difference > 0) {
+            current = (current + 1) % build.images.length;
+          } else {
+            current = (current - 1 + build.images.length) % build.images.length;
+          }
+
+          update();
+        }
+      });
+
+      return section;
     }
-    function closeLightbox() {
-      lightbox.classList.remove('active');
-      document.body.style.overflow = '';
-    }
-    galleryItems.forEach((item, i) => item.addEventListener('click', () => openLightbox(i)));
-    document.getElementById('lightboxClose').addEventListener('click', closeLightbox);
-    document.getElementById('lightboxPrev').addEventListener('click', () => {
-      currentIndex = (currentIndex - 1 + galleryItems.length) % galleryItems.length;
-      openLightbox(currentIndex);
-    });
-    document.getElementById('lightboxNext').addEventListener('click', () => {
-      currentIndex = (currentIndex + 1) % galleryItems.length;
-      openLightbox(currentIndex);
-    });
-    lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
 
-    // Reveal
-    const reveals = document.querySelectorAll('.reveal');
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
-    }, { threshold: 0.12 });
-    reveals.forEach(el => observer.observe(el));
+    function createWorkItem(build) {
+      const item = document.createElement("div");
+      item.className = "work-item";
+
+      item.innerHTML = `
+        <img src="${build.images[0]}" alt="Custom build">
+
+        <button class="small-prev" aria-label="Previous image">
+          &#10094;
+        </button>
+
+        <button class="small-next" aria-label="Next image">
+          &#10095;
+        </button>
+
+        <div class="work-dots"></div>
+      `;
+
+      const image = item.querySelector("img");
+      const dots = item.querySelector(".work-dots");
+
+      let current = 0;
+      let startX = 0;
+
+      build.images.forEach((src, index) => {
+        const dot = document.createElement("button");
+        dot.className = "work-dot" + (index === 0 ? " active" : "");
+
+        dot.addEventListener("click", () => {
+          current = index;
+          update();
+        });
+
+        dots.appendChild(dot);
+      });
+
+      function update() {
+        image.src = build.images[current];
+
+        item.querySelectorAll(".work-dot").forEach((dot, index) => {
+          dot.classList.toggle("active", index === current);
+        });
+      }
+
+      item.querySelector(".small-prev").addEventListener("click", () => {
+        current = (current - 1 + build.images.length) % build.images.length;
+        update();
+      });
+
+      item.querySelector(".small-next").addEventListener("click", () => {
+        current = (current + 1) % build.images.length;
+        update();
+      });
+
+      item.addEventListener("touchstart", event => {
+        startX = event.touches[0].clientX;
+      });
+
+      item.addEventListener("touchend", event => {
+        const endX = event.changedTouches[0].clientX;
+        const difference = startX - endX;
+
+        if (Math.abs(difference) > 50) {
+          if (difference > 0) {
+            current = (current + 1) % build.images.length;
+          } else {
+            current = (current - 1 + build.images.length) % build.images.length;
+          }
+
+          update();
+        }
+      });
+
+      return item;
+    }
+
+    const featuredContainer = document.getElementById("featured-builds");
+    const workGrid = document.getElementById("work-grid");
+
+    builds.forEach(build => {
+      if (!build.images || build.images.length === 0) {
+        return;
+      }
+
+      if (build.featured) {
+        featuredContainer.appendChild(createFeaturedBuild(build));
+      } else {
+        workGrid.appendChild(createWorkItem(build));
+      }
+    });
   </script>
+
 </body>
 </html>
