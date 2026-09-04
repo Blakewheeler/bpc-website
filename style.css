@@ -121,6 +121,20 @@ ul { list-style: none; }
   gap: 60px;
   height: 80px;
 }
+.build-nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 60px;
+}
+.build-nav a {
+  color: var(--light-gray);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
 .logo {
   display: flex;
   flex-direction: column;
