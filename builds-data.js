@@ -80,90 +80,90 @@ const builds = [
   {
     id: "build-06",
     name: "Build 06",
-    images: ["build-06.jpg"]
+    images: ["build-06.JPG"]
   },
 
   {
     id: "build-07",
     name: "Build 07",
-    images: ["build-07.jpg"]
+    images: ["build-07.JPG"]
   },
 
   {
     id: "build-08",
     name: "Build 08",
-    images: ["build-08.jpg"]
+    images: ["build-08.JPG"]
   },
 
   {
     id: "build-09",
     name: "Build 09",
-    images: ["build-09.jpg"]
+    images: ["build-09.jpeg"]
   },
 
   {
     id: "build-10",
     name: "Build 10",
-    images: ["build-10.jpg"]
+    images: ["build-10.JPG"]
   },
 
   {
     id: "build-11",
     name: "Build 11",
-    images: ["build-11.jpg"]
+    images: ["build-11.JPG"]
   },
 
   {
     id: "build-12",
     name: "Build 12",
-    images: ["build-12.jpg"]
+    images: ["build-12.JPG"]
   },
 
   {
     id: "build-13",
     name: "Build 13",
-    images: ["build-13.jpg"]
+    images: ["build-13.JPG"]
   },
 
   {
     id: "build-14",
     name: "Build 14",
-    images: ["build-14.jpg"]
+    images: ["build-14.JPEG"]
   },
 
   {
     id: "build-15",
     name: "Build 15",
-    images: ["build-15.jpg"]
+    images: ["build-15.JPG"]
   },
 
   {
     id: "build-16",
     name: "Build 16",
-    images: ["build-16.jpg"]
+    images: ["build-16.JPG"]
   },
 
   {
     id: "build-17",
     name: "Build 17",
-    images: ["build-17.jpg"]
+    images: ["build-17.JPG"]
   },
 
   {
     id: "build-18",
     name: "Build 18",
-    images: ["build-18.jpg"]
+    images: ["build-18.JPG"]
   },
 
   {
     id: "build-19",
     name: "Build 19",
-    images: ["build-19.jpg"]
+    images: ["build-19.JPG"]
   },
 
   {
     id: "build-20",
     name: "Build 20",
-    images: ["build-20.jpg"]
+    images: ["build-20.JPG"]
   }
 ];
