@@ -33,7 +33,7 @@ const builds = [
     id: "build-02",
     name: "Southern Eagle",
     featured: true,
-    images: images: [
+    images: [
   "images/build-02/IMG_0357.jpeg",
   "images/build-02/IMG_0358.jpeg",
   "images/build-02/IMG_0359.jpeg",
