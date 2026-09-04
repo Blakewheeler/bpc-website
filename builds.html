@@ -249,7 +249,217 @@
         height: 40px;
       }
     }
-  </style>
+ .portfolio-showcase {
+  margin-top: 20px;
+  margin-bottom: 70px;
+}
+
+.portfolio-heading {
+  text-align: center;
+  margin-bottom: 25px;
+  color: white;
+}
+
+.portfolio-heading h2 {
+  font-size: 32px;
+  margin-bottom: 8px;
+}
+
+.portfolio-heading p {
+  opacity: 0.75;
+}
+
+.portfolio-slider {
+  position: relative;
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  background: rgba(0, 0, 0, 0.35);
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.portfolio-slider img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 700px;
+  object-fit: contain;
+  margin: 0 auto;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.portfolio-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 48px;
+  height: 48px;
+  border: 1px solid rgba(255,255,255,0.25);
+  border-radius: 50%;
+  background: rgba(0,0,0,0.72);
+  color: white;
+  font-size: 28px;
+  cursor: pointer;
+  z-index: 3;
+}
+
+.portfolio-prev {
+  left: 15px;
+}
+
+.portfolio-next {
+  right: 15px;
+}
+
+.portfolio-dots {
+  display: flex;
+  justify-content: center;
+  gap: 7px;
+  padding: 14px;
+  background: rgba(0, 0, 0, 0.35);
+}
+
+.portfolio-dot {
+  width: 8px;
+  height: 8px;
+  border: 0;
+  border-radius: 50%;
+  background: #777;
+  padding: 0;
+}
+
+.portfolio-dot.active {
+  background: white;
+  transform: scale(1.25);
+}
+
+@media (max-width: 700px) {
+  .portfolio-heading h2 {
+    font-size: 27px;
+  }
+
+  .portfolio-button {
+    width: 40px;
+    height: 40px;
+    font-size: 24px;
+  }
+}
+
+#work-grid {
+  display: none;
+} .portfolio-showcase {
+  margin-top: 20px;
+  margin-bottom: 70px;
+}
+
+.portfolio-heading {
+  text-align: center;
+  margin-bottom: 25px;
+  color: white;
+}
+
+.portfolio-heading h2 {
+  font-size: 32px;
+  margin-bottom: 8px;
+}
+
+.portfolio-heading p {
+  opacity: 0.75;
+}
+
+.portfolio-slider {
+  position: relative;
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  background: rgba(0, 0, 0, 0.35);
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.portfolio-slider img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 700px;
+  object-fit: contain;
+  margin: 0 auto;
+  padding: 10px;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+.portfolio-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 48px;
+  height: 48px;
+  border: 1px solid rgba(255,255,255,0.25);
+  border-radius: 50%;
+  background: rgba(0,0,0,0.72);
+  color: white;
+  font-size: 28px;
+  cursor: pointer;
+  z-index: 3;
+}
+
+.portfolio-prev {
+  left: 15px;
+}
+
+.portfolio-next {
+  right: 15px;
+}
+
+.portfolio-dots {
+  display: flex;
+  justify-content: center;
+  gap: 7px;
+  padding: 14px;
+  background: rgba(0, 0, 0, 0.35);
+}
+
+.portfolio-dot {
+  width: 8px;
+  height: 8px;
+  border: 0;
+  border-radius: 50%;
+  background: #777;
+  padding: 0;
+}
+
+.portfolio-dot.active {
+  background: white;
+  transform: scale(1.25);
+}
+
+@media (max-width: 700px) {
+  .portfolio-heading h2 {
+    font-size: 27px;
+  }
+
+  .portfolio-button {
+    width: 40px;
+    height: 40px;
+    font-size: 24px;
+  }
+}
+
+#work-grid {
+  display: none;
+}
+      </style>
 </head>
 
 <body class="builds-page">
@@ -277,8 +487,46 @@
         <h2>More of My Work</h2>
         <p>Additional custom builds and projects.</p>
       </div>
+<section class="portfolio-showcase">
+  <div class="portfolio-heading">
+    <h2>More of My Work</h2>
+    <p>A selection of custom builds and projects.</p>
+  </div>
 
-      <div id="work-grid" class="work-grid"></div>
+  <div class="portfolio-slider" id="portfolio-slider">
+    <img id="portfolio-image" src="" alt="Custom build portfolio">
+
+    <button class="portfolio-button portfolio-prev" aria-label="Previous image">
+      &#10094;
+    </button>
+
+    <button class="portfolio-button portfolio-next" aria-label="Next image">
+      &#10095;
+    </button>
+
+    <div class="portfolio-dots" id="portfolio-dots"></div>
+  </div>
+</section>
+       <section class="portfolio-showcase">
+  <div class="portfolio-heading">
+    <h2>More of My Work</h2>
+    <p>A selection of custom builds and projects.</p>
+  </div>
+
+  <div class="portfolio-slider" id="portfolio-slider">
+    <img id="portfolio-image" src="" alt="Custom build portfolio">
+
+    <button class="portfolio-button portfolio-prev" aria-label="Previous image">
+      &#10094;
+    </button>
+
+    <button class="portfolio-button portfolio-next" aria-label="Next image">
+      &#10095;
+    </button>
+
+    <div class="portfolio-dots" id="portfolio-dots"></div>
+  </div>
+</section>
 
     </section>
 
@@ -475,6 +723,93 @@
       }
     });
   </script>
+<script>
+  const portfolioImages = builds
+    .filter(build => !build.featured && build.images && build.images.length)
+    .flatMap(build => build.images);
 
+  const portfolioImage = document.getElementById("portfolio-image");
+  const portfolioDots = document.getElementById("portfolio-dots");
+  const portfolioSlider = document.getElementById("portfolio-slider");
+
+  let portfolioIndex = 0;
+  let portfolioTimer;
+
+  function showPortfolioImage(index) {
+    if (!portfolioImages.length) return;
+
+    portfolioIndex = (index + portfolioImages.length) % portfolioImages.length;
+    portfolioImage.src = portfolioImages[portfolioIndex];
+
+    portfolioDots.innerHTML = "";
+
+    portfolioImages.forEach((src, i) => {
+      const dot = document.createElement("button");
+
+      dot.className =
+        "portfolio-dot" + (i === portfolioIndex ? " active" : "");
+
+      dot.setAttribute("aria-label", "View image " + (i + 1));
+
+      dot.addEventListener("click", () => {
+        showPortfolioImage(i);
+        restartPortfolioTimer();
+      });
+
+      portfolioDots.appendChild(dot);
+    });
+  }
+
+  function nextPortfolioImage() {
+    showPortfolioImage(portfolioIndex + 1);
+  }
+
+  function previousPortfolioImage() {
+    showPortfolioImage(portfolioIndex - 1);
+  }
+
+  function restartPortfolioTimer() {
+    clearInterval(portfolioTimer);
+    portfolioTimer = setInterval(nextPortfolioImage, 5000);
+  }
+
+  document.querySelector(".portfolio-next").addEventListener("click", () => {
+    nextPortfolioImage();
+    restartPortfolioTimer();
+  });
+
+  document.querySelector(".portfolio-prev").addEventListener("click", () => {
+    previousPortfolioImage();
+    restartPortfolioTimer();
+  });
+
+  let touchStartX = 0;
+
+  portfolioSlider.addEventListener("touchstart", event => {
+    touchStartX = event.changedTouches[0].screenX;
+  });
+
+  portfolioSlider.addEventListener("touchend", event => {
+    const touchEndX = event.changedTouches[0].screenX;
+    const difference = touchStartX - touchEndX;
+
+    if (Math.abs(difference) > 50) {
+      if (difference > 0) {
+        nextPortfolioImage();
+      } else {
+        previousPortfolioImage();
+      }
+
+      restartPortfolioTimer();
+    }
+  });
+
+  portfolioImage.addEventListener("click", () => {
+    window.open(portfolioImage.src, "_blank");
+  });
+
+  showPortfolioImage(0);
+  restartPortfolioTimer();
+</script>
 </body>
 </html>
