@@ -1093,6 +1093,10 @@ ul { list-style: none; }
   .lightbox-next { right: 10px; }
 }
 @media (max-width: 768px) {
+    .nav-inner {
+    width: 100%;
+    max-width: none;
+  }
   .nav-links { display: none; }
   .hamburger { display: flex; }
   .mobile-menu { display: block; }
