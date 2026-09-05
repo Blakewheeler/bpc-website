@@ -168,7 +168,7 @@ ul { list-style: none; }
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 2rem;
+  gap: 3rem;
 }
 .nav-links a {
   font-size: 0.9rem;
