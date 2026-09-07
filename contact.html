@@ -314,7 +314,67 @@
       const whatsappURL = `https://wa.me/14253509128?text=${message}`;
       window.open(whatsappURL, '_blank');
     });
+// Contact method and form submission
+const contactMethodSelect = document.getElementById('contact_method');
+const submitButton = document.querySelector('.form-submit');
 
+contactMethodSelect.addEventListener('change', function() {
+  if (this.value === 'Email') {
+    submitButton.textContent = 'Submit Build Request via Email';
+  } else {
+    submitButton.textContent = 'Submit Build Request via WhatsApp';
+  }
+});
+
+document.getElementById('buildForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+
+  const name = document.getElementById('name').value.trim();
+  const email = document.getElementById('email').value.trim();
+  const phone = document.getElementById('phone').value.trim();
+  const contactMethod = document.getElementById('contact_method').value;
+  const truckMake = document.getElementById('truck_make').value.trim();
+  const truckModel = document.getElementById('truck_model').value.trim();
+  const truckYear = document.getElementById('truck_year').value.trim();
+  const scale = document.getElementById('scale').value;
+  const truckColor = document.getElementById('truck_color').value.trim();
+  const shipping = document.getElementById('shipping').value.trim();
+  const customization = document.getElementById('customization').value.trim();
+  const additional = document.getElementById('additional').value.trim();
+  const payment = document.getElementById('payment').value;
+
+  let message = `NEW CUSTOM BUILD REQUEST\n\n`;
+  message += `Name: ${name}\n`;
+  message += `Email: ${email}\n`;
+  message += `Phone: ${phone}\n`;
+  if (contactMethod) message += `Preferred Contact: ${contactMethod}\n`;
+
+  message += `\nTRUCK DETAILS\n`;
+  if (truckMake) message += `Make: ${truckMake}\n`;
+  if (truckModel) message += `Model: ${truckModel}\n`;
+  if (truckYear) message += `Year: ${truckYear}\n`;
+  if (scale) message += `Scale: ${scale}\n`;
+  if (truckColor) message += `Color: ${truckColor}\n`;
+  if (shipping) message += `Shipping: ${shipping}\n`;
+  if (customization) message += `\nCustomization:\n${customization}\n`;
+  if (additional) message += `\nAdditional Details:\n${additional}\n`;
+  if (payment) message += `\nPreferred Payment: ${payment}\n`;
+
+  message += `\nSent from Blake Precision Customs website`;
+
+  if (contactMethod === 'Email') {
+    const subject = 'New Custom Build Request';
+    const emailURL = `mailto:Blakeprecisioncustoms@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(message)}`;
+    window.location.href = emailURL;
+  } else {
+    const whatsappMessage = message
+      .replace(/\n/g, '%0A')
+      .replace(/ /g, '%20');
+
+    const whatsappURL = `https://wa.me/14253509128?text=${whatsappMessage}`;
+    window.open(whatsappURL, '_blank');
+  }
+});
     // Reveal animations
     const reveals = document.querySelectorAll('.reveal');
     const observer = new IntersectionObserver((entries) => {
